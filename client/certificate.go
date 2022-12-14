@@ -2,8 +2,7 @@ package client
 
 import (
 	"fmt"
-	"go-deploy/pkg/subsystems/npm/models"
-	"go-deploy/utils/requestutils"
+	"github.com/saffronjam/terraform-provider-nginx-proxy-manager/models"
 )
 
 func (client *Client) GetWildcardCertificateID(parentDomain string) (int, error) {
@@ -17,12 +16,12 @@ func (client *Client) GetWildcardCertificateID(parentDomain string) (int, error)
 	}
 
 	// check if good request
-	if !requestutils.IsGoodStatusCode(res.StatusCode) {
+	if !IsGoodStatusCode(res.StatusCode) {
 		return -1, makeApiError(res.Body, makeError)
 	}
 
 	var certificates []models.Certificate
-	err = requestutils.ParseBody(res.Body, &certificates)
+	err = ParseBody(res.Body, &certificates)
 	if err != nil {
 		return -1, makeError(err)
 	}

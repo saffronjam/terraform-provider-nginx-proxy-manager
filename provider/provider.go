@@ -40,9 +40,15 @@ func providerConfigure(d *schema.ResourceData) (interface{}, error) {
 	username := d.Get("username").(string)
 	password := d.Get("password").(string)
 
-	return client.New(&client.Config{
+	npmClient, err := client.New(&client.Config{
 		ApiUrl:   url,
 		Username: username,
 		Password: password,
-	}), nil
+	})
+
+	if err != nil {
+		return nil, err
+	}
+
+	return npmClient, nil
 }
