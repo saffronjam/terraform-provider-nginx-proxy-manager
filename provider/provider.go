@@ -16,18 +16,18 @@ func Provider() *schema.Provider {
 			},
 			"username": {
 				Type:        schema.TypeString,
-				Optional:    true,
+				Required:    true,
 				DefaultFunc: schema.EnvDefaultFunc("NPM_USERNAME", ""),
 			},
 			"password": {
 				Type:        schema.TypeString,
-				Optional:    true,
+				Required:    true,
 				DefaultFunc: schema.EnvDefaultFunc("NPM_PASSWORD", ""),
 			},
 		},
 
 		ResourcesMap: map[string]*schema.Resource{
-			"npm_proxy_host": resourceProxyHost(),
+			"nginx_proxy_manager_proxy_host": resourceProxyHost(),
 		},
 		DataSourcesMap: map[string]*schema.Resource{},
 

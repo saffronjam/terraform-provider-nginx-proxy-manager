@@ -29,11 +29,15 @@ func makeApiError(readCloser io.ReadCloser, makeError func(error) error) error {
 	return makeError(fmt.Errorf(errorMessage))
 }
 
-func boolToInt(v bool) int {
+func BoolToInt(v bool) int {
 	if v {
 		return 1
 	}
 	return 0
+}
+
+func IntToBool(i int) bool {
+	return i == 1
 }
 
 func IsGoodStatusCode(code int) bool {
