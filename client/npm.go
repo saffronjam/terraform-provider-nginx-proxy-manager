@@ -42,6 +42,9 @@ func (client *Client) createToken(username, password string) (string, error) {
 
 	tokenReq := models.TokenReq{Identity: username, Secret: password}
 	res, err := client.doJSONRequestUnauthorized("POST", "/tokens", tokenReq)
+	if err != nil {
+		return "", makeError(err)
+	}
 
 	// check if good request
 	if !IsGoodStatusCode(res.StatusCode) {

@@ -1,6 +1,8 @@
 package provider
 
 import (
+	"context"
+	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/saffronjam/terraform-provider-nginx-proxy-manager/client"
 )
@@ -16,26 +18,26 @@ func Provider() *schema.Provider {
 			},
 			"username": {
 				Type:        schema.TypeString,
-				Required:    true,
+				Optional:    true,
 				DefaultFunc: schema.EnvDefaultFunc("NPM_USERNAME", ""),
 			},
 			"password": {
 				Type:        schema.TypeString,
-				Required:    true,
+				Optional:    true,
 				DefaultFunc: schema.EnvDefaultFunc("NPM_PASSWORD", ""),
 			},
 		},
 
 		ResourcesMap: map[string]*schema.Resource{
-			"nginx_proxy_manager_proxy_host": resourceProxyHost(),
+			"npm_proxy_host": resourceProxyHost(),
 		},
 		DataSourcesMap: map[string]*schema.Resource{},
 
-		ConfigureFunc: providerConfigure,
+		ConfigureContextFunc: providerConfigure,
 	}
 }
 
-func providerConfigure(d *schema.ResourceData) (interface{}, error) {
+func providerConfigure(_ context.Context, d *schema.ResourceData) (interface{}, diag.Diagnostics) {
 	url := d.Get("url").(string)
 	username := d.Get("username").(string)
 	password := d.Get("password").(string)
@@ -47,7 +49,7 @@ func providerConfigure(d *schema.ResourceData) (interface{}, error) {
 	})
 
 	if err != nil {
-		return nil, err
+		return nil, diag.FromErr(err)
 	}
 
 	return npmClient, nil
