@@ -31,7 +31,9 @@ func Provider() *schema.Provider {
 		ResourcesMap: map[string]*schema.Resource{
 			"npm_proxy_host": resourceProxyHost(),
 		},
-		DataSourcesMap: map[string]*schema.Resource{},
+		DataSourcesMap: map[string]*schema.Resource{
+			"npm_proxy_host": dataProxyHost(),
+		},
 
 		ConfigureContextFunc: providerConfigure,
 	}

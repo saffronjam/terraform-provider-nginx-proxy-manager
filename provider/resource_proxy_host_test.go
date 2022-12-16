@@ -43,6 +43,14 @@ func TestCreateProxyHost(t *testing.T) {
 					resource.TestCheckResourceAttr(resourceName, "forward_scheme", "http"),
 				),
 			},
+			{
+				Config: testAccCheckProxyHostUpdate(),
+				Check: resource.ComposeTestCheckFunc(
+					testAccResourceExists(resourceName),
+					resource.TestCheckResourceAttr(resourceName, "forward_host", "2.2.2.2"),
+					resource.TestCheckResourceAttr(resourceName, "forward_scheme", "http"),
+				),
+			},
 		},
 	})
 }
@@ -56,6 +64,36 @@ func testAccCheckProxyHost() string {
 				ssl_forced              = false
 				allow_websocket_upgrade = false
 				forward_scheme          = "http"
-				enabled                 = true
+				enabled                 = false
+			}`
+}
+
+func testAccCheckProxyHostUpdate() string {
+	return `resource "npm_proxy_host" "web" {
+				domain_names            = ["onlyfortesting.dev.kthcloud.com"]
+				forward_host            = "2.2.2.2"
+				forward_port            = 8080
+				certificate_id          = 0
+				ssl_forced              = false
+				allow_websocket_upgrade = false
+				forward_scheme          = "http"
+				enabled                 = false
+			}`
+}
+
+func testAccCheckProxyHostDataSource() string {
+	return `resource "npm_proxy_host" "web" {
+				domain_names            = ["onlyfortesting.dev.kthcloud.com"]
+				forward_host            = "1.1.1.1"
+				forward_port            = 8080
+				certificate_id          = 0
+				ssl_forced              = false
+				allow_websocket_upgrade = false
+				forward_scheme          = "http"
+				enabled                 = false
+			}
+
+			data "npm_proxy_host" "imported" {
+				domain_name            = "onlyfortesting.dev.kthcloud.com"
 			}`
 }

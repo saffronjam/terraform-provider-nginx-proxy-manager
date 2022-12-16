@@ -1,46 +1,46 @@
 package models
 
 type ProxyHostCreated struct {
-	ID             int      `json:"id,omitempty"`
-	CreatedOn      string   `json:"created_on,omitempty"`
-	ModifiedOn     string   `json:"modified_on,omitempty"`
-	OwnerUserID    int      `json:"owner_user_id,omitempty"`
-	DomainNames    []string `json:"domain_names,omitempty"`
-	ForwardHost    string   `json:"forward_host,omitempty"`
-	ForwardPort    int      `json:"forward_port,omitempty"`
-	AccessListID   int      `json:"access_list_id,omitempty"`
-	CertificateID  int      `json:"certificate_id,omitempty"`
-	SslForced      int      `json:"ssl_forced,omitempty"`
-	CachingEnabled int      `json:"caching_enabled,omitempty"`
-	BlockExploits  int      `json:"block_exploits,omitempty"`
-	AdvancedConfig string   `json:"advanced_config,omitempty"`
+	ID             int      `json:"id"`
+	CreatedOn      string   `json:"created_on"`
+	ModifiedOn     string   `json:"modified_on"`
+	OwnerUserID    int      `json:"owner_user_id"`
+	DomainNames    []string `json:"domain_names"`
+	ForwardHost    string   `json:"forward_host"`
+	ForwardPort    int      `json:"forward_port"`
+	AccessListID   int      `json:"access_list_id"`
+	CertificateID  int      `json:"certificate_id"`
+	SslForced      int      `json:"ssl_forced"`
+	CachingEnabled int      `json:"caching_enabled"`
+	BlockExploits  int      `json:"block_exploits"`
+	AdvancedConfig string   `json:"advanced_config"`
 	Meta           struct {
-		LetsencryptAgree bool `json:"letsencrypt_agree,omitempty"`
-		DNSChallenge     bool `json:"dns_challenge,omitempty"`
-	} `json:"meta,omitempty"`
-	AllowWebsocketUpgrade int           `json:"allow_websocket_upgrade,omitempty"`
-	HTTP2Support          int           `json:"http2_support,omitempty"`
-	ForwardScheme         string        `json:"forward_scheme,omitempty"`
-	Enabled               int           `json:"enabled,omitempty"`
-	Locations             []interface{} `json:"locations,omitempty"`
-	HstsEnabled           int           `json:"hsts_enabled,omitempty"`
-	HstsSubdomains        int           `json:"hsts_subdomains,omitempty"`
+		LetsencryptAgree bool `json:"letsencrypt_agree"`
+		DNSChallenge     bool `json:"dns_challenge"`
+	} `json:"meta"`
+	AllowWebsocketUpgrade int           `json:"allow_websocket_upgrade"`
+	HTTP2Support          int           `json:"http2_support"`
+	ForwardScheme         string        `json:"forward_scheme"`
+	Enabled               int           `json:"enabled"`
+	Locations             []interface{} `json:"locations"`
+	HstsEnabled           int           `json:"hsts_enabled"`
+	HstsSubdomains        int           `json:"hsts_subdomains"`
 	Certificate           struct {
-		OwnerUserID int      `json:"owner_user_id,omitempty"`
-		Provider    string   `json:"provider,omitempty"`
-		NiceName    string   `json:"nice_name,omitempty"`
-		DomainNames []string `json:"domain_names,omitempty"`
-		ExpiresOn   string   `json:"expires_on,omitempty"`
+		OwnerUserID int      `json:"owner_user_id"`
+		Provider    string   `json:"provider"`
+		NiceName    string   `json:"nice_name"`
+		DomainNames []string `json:"domain_names"`
+		ExpiresOn   string   `json:"expires_on"`
 		Meta        struct {
-		} `json:"meta,omitempty"`
-	} `json:"certificate,omitempty"`
+		} `json:"meta"`
+	} `json:"certificate"`
 	Owner struct {
-		IsDisabled int    `json:"is_disabled,omitempty"`
-		Name       string `json:"name,omitempty"`
-		Nickname   string `json:"nickname,omitempty"`
-		Avatar     string `json:"avatar,omitempty"`
-	} `json:"owner,omitempty"`
-	AccessList         interface{} `json:"access_list,omitempty"`
-	UseDefaultLocation bool        `json:"use_default_location,omitempty"`
-	Ipv6               bool        `json:"ipv6,omitempty"`
+		IsDisabled int    `json:"is_disabled"`
+		Name       string `json:"name"`
+		Nickname   string `json:"nickname"`
+		Avatar     string `json:"avatar"`
+	} `json:"owner"`
+	AccessList         interface{} `json:"access_list"`
+	UseDefaultLocation bool        `json:"use_default_location"`
+	Ipv6               bool        `json:"ipv6"`
 }
