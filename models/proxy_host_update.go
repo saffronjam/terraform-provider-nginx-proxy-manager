@@ -29,4 +29,5 @@ type ProxyHostUpdate struct {
 	HTTP2Support          bool       `json:"http2_support"`
 	HstsEnabled           bool       `json:"hsts_enabled"`
 	HstsSubdomains        bool       `json:"hsts_subdomains"`
+	Enabled               bool       `json:"enabled"`
 }

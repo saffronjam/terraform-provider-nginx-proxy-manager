@@ -2,7 +2,7 @@ package client
 
 import (
 	"fmt"
-	"github.com/saffronjam/terraform-provider-nginx-proxy-manager/models"
+	"github.com/saffronjam/terraform-provider-nginxproxymanager/models"
 )
 
 func (client *Client) GetWildcardCertificateID(parentDomain string) (int, error) {

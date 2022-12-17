@@ -1,11 +1,13 @@
 package main
 
 import (
-	"github.com/hashicorp/terraform-plugin-sdk/v2/plugin"
-	"github.com/saffronjam/terraform-provider-nginx-proxy-manager/provider"
+	"context"
+	"github.com/hashicorp/terraform-plugin-framework/providerserver"
+	"github.com/saffronjam/terraform-provider-nginxproxymanager/nginxproxymanager"
 )
 
 func main() {
-	plugin.Serve(&plugin.ServeOpts{
-		ProviderFunc: provider.Provider})
+	_ = providerserver.Serve(context.Background(), nginxproxymanager.New, providerserver.ServeOpts{
+		Address: "nginxproxymanager",
+	})
 }

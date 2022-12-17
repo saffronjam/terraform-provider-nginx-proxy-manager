@@ -4,7 +4,7 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
-	"github.com/saffronjam/terraform-provider-nginx-proxy-manager/models"
+	"github.com/saffronjam/terraform-provider-nginxproxymanager/models"
 	"io"
 	"log"
 	"net/http"
